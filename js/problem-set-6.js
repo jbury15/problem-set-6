@@ -247,37 +247,37 @@ function drawSmileyFace() {
 
 function drawStar() {
   let canvas = document.getElementById('canvas6');
-     let ctx = canvas.getContext('2d');
-     ctx.clearRect(0, 0, canvas.width, canvas.height);
+   let ctx = canvas.getContext('2d');
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-       let outerRadius=Number(prompt("Outer Radius:"));
-       let innerRadius=Number(prompt("Inner Radius:"));
-       if (outerRadius>=innerRadius && canvas.width>=outerRadius+125 && canvas.height>=outerRadius+125 && innerRadius>=1 && outerRadius>=1){
-         let points=5;
-         let outerx=[];
-         let outery=[];
-         let innerx=[];
-         let innery=[];
-         for(let i=0;i<points;i++){
-           outerx.push(Math.cos((Math.PI*2*i)/points-(Math.PI/2))*outerRadius+125);
-           outery.push(Math.sin((Math.PI*2*i)/points-(Math.PI/2))*outerRadius+125);
-           innerx.push(Math.cos(((Math.PI*2*i)/points)-(Math.PI/2)+(Math.PI/points))*innerRadius+125);
-           innery.push(Math.sin(((Math.PI*2*i)/points)-(Math.PI/2)+(Math.PI/points))*innerRadius+125);
-         }
-         ctx.beginPath();
-         ctx.moveTo(outerx[0], outery[0]);
-         for(let j=0;j<outerx.length;j++){
-           ctx.lineTo(innerx[j], innery[j]);
-           ctx.lineTo(outerx[j+1], outery[j+1]);
-         }
-         ctx.lineTo(outerx[0], outery[0]);
-         ctx.stroke();
-         ctx.closePath();
-     }
-     else{
-         alert('invalid inputs');
+     let outerRadius=Number(prompt("Outer radius:"));
+     let innerRadius=Number(prompt("Inner radius:"));
+     if (outerRadius>=innerRadius && canvas.width>=outerRadius+125 && canvas.height>=outerRadius+125 && innerRadius>=1 && outerRadius>=1){
+       let points=5;
+       let outerx=[];
+       let outery=[];
+       let innerx=[];
+       let innery=[];
+       for(let i=0;i<points;i++){
+         outerx.push(Math.cos((Math.PI*2*i)/points-(Math.PI/2))*outerRadius+125);
+         outery.push(Math.sin((Math.PI*2*i)/points-(Math.PI/2))*outerRadius+125);
+         innerx.push(Math.cos(((Math.PI*2*i)/points)-(Math.PI/2)+(Math.PI/points))*innerRadius+125);
+         innery.push(Math.sin(((Math.PI*2*i)/points)-(Math.PI/2)+(Math.PI/points))*innerRadius+125);
        }
+       ctx.beginPath();
+       ctx.moveTo(outerx[0], outery[0]);
+       for(let j=0;j<outerx.length;j++){
+         ctx.lineTo(innerx[j], innery[j]);
+         ctx.lineTo(outerx[j+1], outery[j+1]);
+       }
+       ctx.lineTo(outerx[0], outery[0]);
+       ctx.stroke();
+       ctx.closePath();
    }
+   else{
+       alert('invalid inputs');
+     }
+ }
 
 /*
  * Stop Sign. 7 points.
