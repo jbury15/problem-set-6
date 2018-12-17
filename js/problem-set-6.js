@@ -322,7 +322,7 @@ function drawStopSign() {
   ctx.closePath();
   ctx.beginPath();
   ctx.textAlign="center";
-  ctx.font="56px Georgia";
+  ctx.font="62px sans-serif";
   ctx.fillStyle="white";
   ctx.fillText("STOP", center[0], center[1]+15);
   ctx.closePath()
@@ -347,8 +347,26 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
+  let canvas = document.getElementById('canvas8');
+    let ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let sideLength=Number(prompt("Length:"));
+    let x=10;
+    let y=canvas.height-10;
+    let i=0;
+    lineNumber=1;
+    while(i<5){
+      for(let j=0+lineNumber;j<=5;j++){
+        ctx.strokeRect(x,y-sideLength,sideLength,sideLength);
+        x+=sideLength;
+      }
+      x=10+(sideLength/2)*lineNumber;
+      y-=sideLength;
+      lineNumber++;
+      i++;
+    }
 
-}
+  }
 
 /*
  * House. 7 points.
@@ -380,5 +398,67 @@ function drawPyramid() {
  */
 
 function drawHouse() {
+  const canv = document.getElementById("canvas9")
+  	const ctxt = canv.getContext('2d');
+  	ctxt.clearRect(0, 0, canv.width, canv.height);
 
-}
+  	let draw = false;
+  	let xdim = canv.width*.7;
+  	let ydim = canv.height*.6;
+  	let yroofdim = canv.height*.3;
+
+  	let housecol = prompt("House Color:");
+  	let doorcol = prompt("Door Color:");
+  	if((housecol == "blue" || housecol == "brown" || housecol == "green" ||
+  		housecol == "orange" || housecol == "purple" || housecol == "red" || housecol == "yellow")
+  		&& (doorcol == "blue" || doorcol == "brown" || doorcol == "green" ||
+  		doorcol == "orange" || doorcol == "purple" || doorcol == "red" || doorcol == "yellow")) {
+  		draw = true;
+  	}
+  	else {alert("Invalid input(s)");}
+
+  	if (draw) {
+  		ctxt.strokeStyle="black";
+  		ctxt.lineWidth=2;
+
+
+  		//House Frame
+  		ctxt.fillStyle=housecol;
+  		ctxt.fillRect(150, canv.height-ydim-10, xdim, ydim);
+  		ctxt.strokeRect(150, canv.height-ydim-10, xdim, ydim);
+  		//Roof
+  		ctxt.fillStyle="grey";
+  		ctxt.beginPath();
+  		ctxt.moveTo(150, canv.height-ydim-10);
+  		ctxt.lineTo(150+xdim/2, canv.height-ydim-yroofdim-10);
+  		ctxt.lineTo(150+xdim, canv.height-ydim-10);
+  		ctxt.closePath();
+  		ctxt.stroke();
+  		ctxt.fill()
+  		//Door
+  		ctxt.fillStyle=doorcol;
+  		ctxt.fillRect(150 + (xdim/2-50), canv.height-10-160, 100, 160);
+  		ctxt.strokeRect(150 + (xdim/2-50), canv.height-10-160, 100, 160);
+  		ctxt.fillStyle="gold"
+  		ctxt.beginPath();
+  		ctxt.arc(150 + (xdim/2-35), canv.height-10-80, 6, Math.PI*0, Math.PI*2)
+  		ctxt.closePath();
+  		ctxt.stroke();
+  		ctxt.fill();
+  		//Windows
+  		ctxt.fillStyle="LightBlue";
+  		ctxt.fillRect(150+(xdim)*.15, canv.height-10-(ydim)*.4, xdim*.15, xdim*.15)
+  		ctxt.fillRect(150+(xdim-xdim*.3), canv.height-10-(ydim)*.4, xdim*.15, xdim*.15)
+  		ctxt.fillRect(150+(xdim)*.15, canv.height-10-(ydim-ydim*.15), xdim*.15, xdim*.15)
+  		ctxt.fillRect(150+(xdim-xdim*.3), canv.height-10-(ydim-ydim*.15), xdim*.15, xdim*.15)
+  		ctxt.strokeRect(150+(xdim)*.15, canv.height-10-(ydim)*.4, xdim*.15, xdim*.15)
+  		ctxt.strokeRect(150+(xdim-xdim*.3), canv.height-10-(ydim)*.4, xdim*.15, xdim*.15)
+  		ctxt.strokeRect(150+(xdim)*.15, canv.height-10-(ydim-ydim*.15), xdim*.15, xdim*.15)
+  		ctxt.strokeRect(150+(xdim-xdim*.3), canv.height-10-(ydim-ydim*.15), xdim*.15, xdim*.15)
+  		ctxt.stroke();
+
+  	}
+
+
+
+  }
