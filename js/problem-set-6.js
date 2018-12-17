@@ -149,7 +149,16 @@ ctx.strokeText(10, 10)
  */
 
 function drawTriangle() {
-
+const canvas = document.getElementById('canvas4');
+const ctx = canvas.getContext('2d');
+let a = prompt("Enter a side length");
+let b = prompt("Enter a second side length");
+let c = prompt("Enter a third side length"):
+if (a** + b** != c**){
+    alert("Your right triangle is not valid")
+}
+else{
+  ctx.strokeTri(10, 10)
 }
 
 /*
