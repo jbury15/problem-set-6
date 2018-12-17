@@ -95,29 +95,21 @@ else {
  */
 
 function drawColoredRectangle() {
-const canvas = document.getElementById('canvas3')
-const ctx = canvas.getContext('2d')
-ctx.font = '50px, 100px'
-ctx.strokeText(10, 10)
-  while(true){
-  let  rectangle = prompt("Color:")
+  let canvas = document.getElementById("canvas3");
+    let context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    let color;
+    while(true){
+      color=prompt("Please Enter a Valid Color")
+      if(color=="black" || color=="blue" || color=="green" || color=="orange" || color=="purple" || color=="red" || color=="yellow") {
+        break;
+      }
+    }
+    context.fillStyle=color;
+    context.fillRect(10,10,100,50);
+
   }
-  if (rectangle == "blue"){
-    rectangle = "#0000FF"
-  } else if (rectangle == "black"){
-    rectangle = "#000000"
-  } else if (rectangle == "green"){
-    rectangle = "#00FF00"
-  } else if (rectangle == "orange"){
-    rectangle = "#FFA500"
-  } else if (rectangle == "purple"){
-    rectangle = "#800080"
-  } else if (rectangle == "red"){
-    rectangle = "#FF0000"
-  } else if (rectangle == "yellow"){
-    rectangle = "#FFFF00"
-  }
-}
 
 /*
  * Triangle. 5 points.
@@ -149,18 +141,40 @@ ctx.strokeText(10, 10)
  */
 
 function drawTriangle() {
-const canvas = document.getElementById('canvas4');
-const ctx = canvas.getContext('2d');
-let a = prompt("Enter a side length");
-let b = prompt("Enter a second side length");
-let c = prompt("Enter a third side length"):
-if (a** + b** != c**){
-    alert("Your right triangle is not valid")
-}
-else{
-  ctx.strokeTri(10, 10)
-}
-
+  let x=10;
+   let y=10;
+   let a;
+   let b;
+   let c;
+   let canvas = document.getElementById("canvas4");
+   let context = canvas.getContext("2d");
+   context.clearRect(0, 0, canvas.width, canvas.height);
+   while(true){
+ 	a=Number(prompt("Enter side 1 length"));
+ 	b=Number(prompt("Enter side 2 length"));
+ 	c=Number(prompt("Enter hypotenuse length"));
+ 	if(((a**2) + (b**2) == (c**2)) && a>0 && b>0 && c>0 && canvas.width-x-a>=0 && canvas.height-y-b>=0){
+ 		break;
+ 	}else{
+ 		alert("That is not a valid triangle")
+ 	}
+   }
+  //Line A
+  context.beginPath(); //Begins a path
+  context.moveTo(x,y); //Choses the starting point
+  context.lineTo(x,y+a); //Line A coordinates: It is a vertical line, therefore the same x value but different y-value
+  context.stroke(); //Draws the line
+  //Line B
+  context.beginPath();
+  context.moveTo(x,y+a);
+  context.lineTo(x+b,y+a);
+  context.stroke();
+  //Hypotenuse
+  context.beginPath();
+  context.moveTo(x,y);
+  context.lineTo(x+b,y+a);
+  context.stroke();
+ }
 /*
  * Smile. 7 points.
  *
