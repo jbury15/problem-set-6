@@ -43,7 +43,30 @@ function sayHello() {
  */
 
 function drawRectangle() {
-
+const canvas = document.getElementById('canvas2')
+const ctx = canvas.getContext('2d')
+let height = prompt("Height:")
+let width = prompt("Width:")
+let x = prompt("X:")
+let y = prompt("Y:")
+if (width < 1){
+  alert("Your width is too small.")
+}
+else if (height < 1){
+  alert("Your height is too small.")
+}
+else if (x < 5){
+  alert("Your x-coordinate is too small.")
+}
+else if (y < 5){
+  alert("Your y-coordinate is too small.")
+}
+else if (height > 256 || width > 256 || x > 256 || y > 256){
+  alert("The rectangle will not fit on the canvas")
+}
+else {
+  ctx.strokeRect(height, width, x, y)
+}
 }
 
 /*
@@ -72,13 +95,27 @@ function drawRectangle() {
  */
 
 function drawColoredRectangle() {
+const canvas = document.getElementById('canvas3')
+const ctx = canvas.getContext('2d')
+ctx.font = '50px, 100px'
+ctx.strokeText(10, 10)
   while(true){
-    rectangle = prompt("Color:")
+  let  rectangle = prompt("Color:")
   }
   if (rectangle == "blue"){
     rectangle = "#0000FF"
   } else if (rectangle == "black"){
-    rectangle 
+    rectangle = "#000000"
+  } else if (rectangle == "green"){
+    rectangle = "#00FF00"
+  } else if (rectangle == "orange"){
+    rectangle = "#FFA500"
+  } else if (rectangle == "purple"){
+    rectangle = "#800080"
+  } else if (rectangle == "red"){
+    rectangle = "#FF0000"
+  } else if (rectangle == "yellow"){
+    rectangle = "#FFFF00"
   }
 }
 
